@@ -3,7 +3,8 @@ Pixelgroup
 
 grouping pixels in a LED-strip
 
-Pixelgroup comes in 4 flavours
+
+Pixelgroup comes in 4 flavours:
 
 PixelgroupBase:
 - basic pixelgroup. can set color
