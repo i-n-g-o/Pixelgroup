@@ -284,16 +284,15 @@ Color& PixelgroupBase::getColor()
 void PixelgroupBase::paint(PixelWriterInterface& writer)
 {
   // safeties
-  if (!m_dirty) return;
+  if (!isDirty()) return;
   if (m_pixels == 0 || m_pixelLength == 0) return;
   
   
   // mark as clean
-  m_dirty = false;  
+  setDirty(false);
   
   
-  for (uint8_t i=0; i<m_pixelLength; i++) {
-  
+  for (uint8_t i=0; i<m_pixelLength; i++) {  
     uint8_t pixelIndex = m_pixels[i];    
     writer.setPixelColor((uint8_t)pixelIndex, m_color.getR(), m_color.getG(), m_color.getB());
   }

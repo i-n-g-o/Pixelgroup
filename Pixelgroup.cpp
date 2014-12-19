@@ -62,11 +62,11 @@ void Pixelgroup::tick(unsigned long _now)
 {
   // EASING
   boolean d = PixelgroupE::tick(_now, getColor());  
-  setDirty(d);
+  if (d) setDirty(true);
   
   // STROBE
   boolean c = PixelgroupS::tick(_now);
-  if (c) setDirty(c);
+  if (c) setDirty(true);
 }
 
 

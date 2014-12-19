@@ -22,6 +22,7 @@
 //--------------------------------------------------------
 // constructor, deconstructor
 PixelgroupS::PixelgroupS() : Strobe()
+	,m_isStrobing(0)
 {
 }
 
