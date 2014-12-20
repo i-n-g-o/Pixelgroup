@@ -51,6 +51,9 @@ public:
   boolean update(unsigned long, double*);
   
 private:
+  
+  double calcCurrent(long);
+  
   uint8_t      m_easingFunc;
   uint8_t      m_easingType;
   uint16_t     m_duration; // in milliseconds (max 65536 ms)

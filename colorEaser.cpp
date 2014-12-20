@@ -76,39 +76,7 @@ boolean ColorEaser::update(unsigned long _now, Color& c)
   // do easing
   double percent;  
   m_isEasing = Easer::update(_now, &percent);
-  
-  if (percent >= 1.0) {
-    switch (getLoop())
-    {
-      case EASING_LOOP_LOOP:
-      while (percent > 1.0) {
-        percent -= 1.0;
-      }
-      break;
-    
-      case EASING_LOOP_BOUNCE:
-      {
-        // reverse to from
-        Color _c;
-        _c.setRGB(m_from);
-    
-        setFrom(m_to);
-        setTo(_c);
-        
-        while (percent > 1.0) {
-          percent -= 1.0;
-        }
-      }
-      break;
-    
-      case EASING_LOOP_NONE:
-      default:
-        // stop easing
-        percent = 1.0;
-      break;
-    }
-  }
-  
+   
   double rd = m_to.getR() - m_from.getR();
   double gd = m_to.getG() - m_from.getG();
   double bd = m_to.getB() - m_from.getB();

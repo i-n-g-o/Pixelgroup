@@ -62,8 +62,7 @@ boolean Easer::update(double* current)
 
 boolean Easer::update(unsigned long _now, double* current)
 {
-  boolean result = true;
-  unsigned long currentTime = 0;
+  signed long currentTime = 0;
   
   // did we start already?
   if (m_startTime == 0) {
@@ -82,6 +81,64 @@ boolean Easer::update(unsigned long _now, double* current)
   }
 
   
+  // take care about looping, correct currentTime
+  switch (m_loop)
+  {
+    case EASING_LOOP_LOOP:
+      
+      if (currentTime > m_duration) {
+        
+        while (currentTime > m_duration) {
+          currentTime -= m_duration;
+        }
+        
+        // reset starttime, correct _now with time-overflow
+        m_startTime = _now - currentTime;
+
+      }
+      break;
+      
+    case EASING_LOOP_BOUNCE:
+      if (currentTime > m_duration) {
+        // going reverse correct currentTime
+        currentTime = m_duration - (currentTime - m_duration);
+        
+        if (currentTime < 0) {
+          // reverse again...
+          currentTime = -currentTime;
+          
+          // safety in case currentTime > duration
+          while (currentTime > m_duration) {
+            currentTime -= m_duration;
+          }
+          
+          // reset starttime, correct _now with time-overflow
+          m_startTime = _now - currentTime;
+        }
+      }
+      
+      break;
+      
+    case EASING_LOOP_NONE:
+    default:
+      if (currentTime > m_duration) {
+        *current = 1.0;
+        
+        // early return
+        return false;
+      }
+      break;
+  }
+
+  // calculate current
+  *current = calcCurrent(currentTime);
+  
+  return true;
+}
+
+
+double Easer::calcCurrent(long currentTime)
+{
 //    // only linear for now
 //  // calc current value
 //  switch(m_easingType)
@@ -89,43 +146,22 @@ boolean Easer::update(unsigned long _now, double* current)
 //    case EASING_IN:
 //      *current = (double)currentTime/(double)m_duration;
 //      break;
-//      
+//
 //    case EASING_OUT:
 //      *current = (double)currentTime/(double)m_duration;
 //      break;
-//      
+//
 //    case EASING_IN_OUT:
 //      *current = (double)currentTime/(double)m_duration;
 //      break;
 //
-//       
+//
 //     default:
 //       *current = (double)currentTime/(double)m_duration;
 //       break;
 //   }
   
+  
   // only linear for now!
-  *current = (double)currentTime/(double)m_duration;
-  
-  
-  // test if we are withing time bound
-  if (currentTime > m_duration) {
-  
-  // set starttime = 0
-//  rewind();
-//  while(currentTime > m_duration) {
-//    currentTime -= m_duration;
-//  }
-  
-    // correct starttime
-    m_startTime = _now;// - currentTime;
-  }
-  
-  
-  if (*current >= 1.0 && m_loop == EASING_LOOP_NONE) {    
-    *current = 1.0;
-    result = false;
-  }
-  
-  return result;
+  return (double)currentTime/(double)m_duration;
 }
