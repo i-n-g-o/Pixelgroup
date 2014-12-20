@@ -7,7 +7,7 @@ Pixelgroup is a library to group pixels in a LED-strip. It is intended to be use
 Pixelgroup has 4 Pixelgroup classes:
 
 PixelgroupBase:
-- basic pixelgroup.
+- basic pixelgroup
 - can set color
 - If you just need to set a color in groups, use this
 
