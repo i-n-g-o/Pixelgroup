@@ -39,14 +39,17 @@ class ColorEaser : public Easer
   void setTo(uint8_t, uint8_t, uint8_t);
   Color& getTo() {return m_to;};
   
+  void setEasing(boolean easing) {m_isEasing = easing;};
+  boolean isEasing() {return m_isEasing;};
   
-  boolean tick(Color& c);
-  boolean tick(unsigned long _now, Color& c);
+  boolean update(Color& c);
+  boolean update(unsigned long _now, Color& c);
   
 private:
   Color       m_from;
   Color       m_to;
   
+  boolean     m_isEasing;
 };
 
 

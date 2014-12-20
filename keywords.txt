@@ -21,7 +21,7 @@ Pixelgroup	KEYWORD1
 #######################################
 
 #general
-tick	KEYWORD2
+update	KEYWORD2
 paint	KEYWORD2
 
 #easer

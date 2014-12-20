@@ -25,8 +25,8 @@
 
 
 #include "PixelgroupBase.h"
-#include "PixelgroupE.h"
-#include "PixelgroupS.h"
+#include "colorEaser.h"
+#include "strobe.h"
 #include "PixelgroupEaserInterface.h"
 #include "PixelgroupStrobeInterface.h"
 
@@ -53,8 +53,8 @@ typedef enum {
 // a pixelgroup which can: ease, strobe, flicker
 class Pixelgroup : 
   public PixelgroupBase,
-  public PixelgroupE,
-  public PixelgroupS,
+  public ColorEaser,
+  public Strobe,
   public PixelgroupEaserInterface,
   public PixelgroupStrobeInterface
 {
@@ -71,16 +71,17 @@ public:
   
   
   // satisfy interfaces
+  
   // Pixelgroup strobe interface
   void setStrobing(boolean b);
-  boolean isStrobing() {return PixelgroupS::isStrobing();};
+  boolean isStrobing() {return Strobe::isStrobing();};
   
   void paint(PixelWriterInterface&);
   
   // Pixelgroup strobe interface
   // Pixelgroup easer interface
-  void tick();
-  void tick(unsigned long _now);
+  void update();
+  void update(unsigned long _now);
   
 
 private:

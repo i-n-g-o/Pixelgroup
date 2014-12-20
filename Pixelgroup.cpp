@@ -21,13 +21,13 @@
 
 //--------------------------------------------------------
 // constructor, deconstructor
-Pixelgroup::Pixelgroup() : PixelgroupBase(), PixelgroupE(), PixelgroupS()
+Pixelgroup::Pixelgroup() : PixelgroupBase(), ColorEaser(), Strobe()
   ,m_isFlickering(false)
 {
 }
 
 
-Pixelgroup::Pixelgroup(uint8_t count, ...) : PixelgroupBase(), PixelgroupE(), PixelgroupS()
+Pixelgroup::Pixelgroup(uint8_t count, ...) : PixelgroupBase(), ColorEaser(), Strobe()
   ,m_isFlickering(false)
 {
   va_list args;
@@ -44,28 +44,28 @@ Pixelgroup::Pixelgroup(uint8_t count, ...) : PixelgroupBase(), PixelgroupE(), Pi
 //--------------------------------------------------------
 void Pixelgroup::setStrobing(boolean b)
 {
-  PixelgroupS::setStrobing(b);
+  Strobe::setStrobing(b);
 
   setDirty(true);
 }
 
 
 //--------------------------------------------------------
-void Pixelgroup::tick()
+void Pixelgroup::update()
 {
   unsigned long _now = millis();  
-  tick(_now);
+  update(_now);
 }
 
 
-void Pixelgroup::tick(unsigned long _now)
+void Pixelgroup::update(unsigned long _now)
 {
   // EASING
-  boolean d = PixelgroupE::tick(_now, getColor());  
+  boolean d = ColorEaser::update(_now, getColor());  
   if (d) setDirty(true);
   
   // STROBE
-  boolean c = PixelgroupS::tick(_now);
+  boolean c = Strobe::update(_now);
   if (c) setDirty(true);
 }
 

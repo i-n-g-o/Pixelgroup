@@ -21,7 +21,7 @@
 
 
 #include "PixelgroupBase.h"
-#include "PixelgroupE.h"
+#include "colorEaser.h"
 #include "PixelgroupEaserInterface.h"
 
 
@@ -29,7 +29,7 @@
 // a pixelgroup with color easing ability
 class PixelgroupEaser :
   public PixelgroupBase,
-  public PixelgroupE,
+  public ColorEaser,
   public PixelgroupEaserInterface
 {
 public:
@@ -38,8 +38,8 @@ public:
   PixelgroupEaser(uint8_t count, ...);
   
   // easer interface
-  void tick();
-  void tick(unsigned long _now);
+  void update();
+  void update(unsigned long _now);
   
 };
 

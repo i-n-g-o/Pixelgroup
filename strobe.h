@@ -40,16 +40,21 @@ public:
   void setStrobeState(boolean);
   boolean getStrobeState() {return m_state;};  
   
+  void setStrobing(boolean);
+  boolean isStrobing() {return m_isStrobing;};
   
-  boolean tick();
-  boolean tick(unsigned long _now);
+  
+  boolean update();
+  boolean update(unsigned long _now);
   
 private:
   uint16_t        m_strobeOffTime; // in ms (max 65.535 ms)
   uint16_t        m_strobeOnTime; // in ms (max 65.535 ms)
   
-  unsigned long   m_lastTick;
-  boolean         m_state;  
+  unsigned long   m_lastUpdate;
+  boolean         m_state;
+  
+  boolean         m_isStrobing;
 };
 
 

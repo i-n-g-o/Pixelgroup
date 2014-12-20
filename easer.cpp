@@ -52,15 +52,15 @@ void Easer::rewind()
 }
 
 
-boolean Easer::tick(double* current)
+boolean Easer::update(double* current)
 {
   unsigned long _now = millis();
   
-  return tick(_now, current);
+  return update(_now, current);
 }
 
 
-boolean Easer::tick(unsigned long _now, double* current)
+boolean Easer::update(unsigned long _now, double* current)
 {
   boolean result = true;
   unsigned long currentTime = 0;

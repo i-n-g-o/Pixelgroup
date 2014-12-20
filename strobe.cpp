@@ -25,42 +25,55 @@ Strobe::Strobe() :
   ,m_strobeOnTime(250)
 //  ,m_offMultiplier(0.0)
 //  ,m_onMultiplier(1.0)
-  ,m_lastTick(0)  
+  ,m_lastUpdate(0)
   ,m_state(true)
+  ,m_isStrobing(0)
 {
 }
 
 
 
 //--------------------------------------------------------
+void Strobe::setStrobing(boolean b)
+{
+  m_isStrobing = b;
+  setStrobeState(false);
+}
+
+
 void Strobe::setStrobeState(boolean state)
 {
   m_state = state;
   // reset time
-  m_lastTick = millis();
+  m_lastUpdate = millis();
 }
 
 
 //--------------------------------------------------------
-boolean Strobe::tick()
+boolean Strobe::update()
 {
   unsigned long _now = millis();
   
-  return tick(_now);
+  return update(_now);
 }
 
 
-boolean Strobe::tick(unsigned long _now)
-{  
+boolean Strobe::update(unsigned long _now)
+{
+  // if not turned on return false (not changed = not dirty)
+  if (!m_isStrobing) return false;
+  
+  
+  // do strobe
   unsigned long diff = 0;
   boolean changed = false;
 
   // take care of type limits
-  if (_now >= m_lastTick) {  
-  diff = _now - m_lastTick;
+  if (_now >= m_lastUpdate) {  
+    diff = _now - m_lastUpdate;
   } else {
-  // type overflow
-  diff = ULONG_MAX - m_lastTick + _now;
+    // type overflow
+    diff = ULONG_MAX - m_lastUpdate + _now;
   }
   
   if (m_state) {
@@ -68,7 +81,7 @@ boolean Strobe::tick(unsigned long _now)
     if (diff > m_strobeOnTime) {
       // turn off
       m_state = false;
-      m_lastTick = _now;
+      m_lastUpdate = _now;
         
       changed = true;
     }
@@ -77,12 +90,13 @@ boolean Strobe::tick(unsigned long _now)
     if (diff > m_strobeOffTime) {
       // turn on
       m_state = true;
-      m_lastTick = _now;
+      m_lastUpdate = _now;
       
       changed = true;
     }
   }
   
+  // return if state changed or not
   return changed;
 }
 

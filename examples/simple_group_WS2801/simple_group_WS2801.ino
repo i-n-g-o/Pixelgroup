@@ -92,7 +92,7 @@ void loop()
   // tick pickelgroups with same timestamp (so the animations are in sync)
   unsigned long _now = millis();
   
-  thegroup.tick(_now);
+  thegroup.update(_now);
   
   // strip only gets written, if pixels are dirty
   writeGroups();

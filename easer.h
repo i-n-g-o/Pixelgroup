@@ -47,8 +47,8 @@ public:
   
   void rewind();
   
-  boolean tick(double*);
-  boolean tick(unsigned long, double*);
+  boolean update(double*);
+  boolean update(unsigned long, double*);
   
 private:
   uint8_t      m_easingFunc;

@@ -21,12 +21,12 @@
 
 //--------------------------------------------------------
 // constructor, deconstructor
-PixelgroupStrobe::PixelgroupStrobe() : PixelgroupBase(), PixelgroupS()
+PixelgroupStrobe::PixelgroupStrobe() : PixelgroupBase(), Strobe()
 {
 }
 
 
-PixelgroupStrobe::PixelgroupStrobe(uint8_t count, ...) : PixelgroupBase(), PixelgroupS()
+PixelgroupStrobe::PixelgroupStrobe(uint8_t count, ...) : PixelgroupBase(), Strobe()
 {
   va_list args;
   va_start(args, count);
@@ -42,25 +42,25 @@ PixelgroupStrobe::PixelgroupStrobe(uint8_t count, ...) : PixelgroupBase(), Pixel
 //--------------------------------------------------------
 void PixelgroupStrobe::setStrobing(boolean b)
 {
-  PixelgroupS::setStrobing(b);
+  Strobe::setStrobing(b);
 
   setDirty(true);
 }
 
 
 //--------------------------------------------------------
-void PixelgroupStrobe::tick()
+void PixelgroupStrobe::update()
 {
   unsigned long _now = millis();  
-  tick(_now);
+  update(_now);
 }
 
 
-void PixelgroupStrobe::tick(unsigned long _now)
+void PixelgroupStrobe::update(unsigned long _now)
 {
-  boolean changed = PixelgroupS::tick(_now);
+  boolean changed = Strobe::update(_now);
   
-  if(changed) setDirty(true);
+  if (changed) setDirty(true);
 }
 
 
@@ -87,7 +87,7 @@ void PixelgroupStrobe::paint(PixelWriterInterface& writer)
     if (!getStrobeState()) {
       writer.setPixelColor(pixelIndex, 0, 0, 0);
     } else {
-      writer.setPixelColor((uint8_t)pixelIndex, getColor().getR(), getColor().getG(), getColor().getB());
+      writer.setPixelColor((uint8_t)pixelIndex, getR(), getG(), getB());
     }
   }
 }

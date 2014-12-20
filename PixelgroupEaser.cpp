@@ -21,11 +21,11 @@
 
 //--------------------------------------------------------
 // constructor, deconstructor
-PixelgroupEaser::PixelgroupEaser() : PixelgroupBase(), PixelgroupE()
+PixelgroupEaser::PixelgroupEaser() : PixelgroupBase(), ColorEaser()
 {}
 
 
-PixelgroupEaser::PixelgroupEaser(uint8_t count, ...) : PixelgroupBase(), PixelgroupE()
+PixelgroupEaser::PixelgroupEaser(uint8_t count, ...) : PixelgroupBase(), ColorEaser()
 {
   va_list args;
   va_start(args, count);
@@ -38,15 +38,15 @@ PixelgroupEaser::PixelgroupEaser(uint8_t count, ...) : PixelgroupBase(), Pixelgr
 
 
 //--------------------------------------------------------
-void PixelgroupEaser::tick()
+void PixelgroupEaser::update()
 {
   unsigned long _now = millis();  
-  tick(_now);
+  update(_now);
 }
 
 
-void PixelgroupEaser::tick(unsigned long _now)
+void PixelgroupEaser::update(unsigned long _now)
 {
-  boolean d = PixelgroupE::tick(_now, getColor());  
-  setDirty(d);
+  boolean d = ColorEaser::update(_now, getColor());  
+  if (d) setDirty(true);
 }

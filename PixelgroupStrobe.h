@@ -21,7 +21,7 @@
 
 
 #include "PixelgroupBase.h"
-#include "PixelgroupS.h"
+#include "strobe.h"
 #include "PixelgroupStrobeInterface.h"
 
 
@@ -29,7 +29,7 @@
 // a pixelgroup with strobing ability
 class PixelgroupStrobe :
   public PixelgroupBase,
-  public PixelgroupS,
+  public Strobe,
   public PixelgroupStrobeInterface
 {
 public:
@@ -39,10 +39,10 @@ public:
   
   // Pixelgroup strobe interface
   void setStrobing(boolean b);
-  boolean isStrobing() {return PixelgroupS::isStrobing();};
+  boolean isStrobing() {return Strobe::isStrobing();};
   
-  void tick();
-  void tick(unsigned long _now);
+  void update();
+  void update(unsigned long _now);
   
   void paint(PixelWriterInterface&);
 };

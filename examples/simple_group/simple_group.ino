@@ -4,7 +4,7 @@
 
 
 // adafuit strip
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(20, 7, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(20, 6, NEO_GRB + NEO_KHZ800);
 
 //------------------------
 // setup a pixelwriter
@@ -94,7 +94,7 @@ void loop()
   unsigned long _now = millis();
   
   // tick this group with timestamp
-  thegroup.tick(_now);
+  thegroup.update(_now);
   
   // strip only gets written, if pixels are dirty
   writeGroups();

@@ -24,9 +24,11 @@
 //--------------------------------------------------------
 // constructor
 ColorEaser::ColorEaser() : Easer()
+  ,m_isEasing(false)
 {};
 
-ColorEaser::ColorEaser(easingFunc func) :  Easer(func)
+ColorEaser::ColorEaser(easingFunc func) : Easer(func)
+  ,m_isEasing(false)
 {};
 
 
@@ -54,18 +56,26 @@ void ColorEaser::setTo(uint8_t r, uint8_t g, uint8_t b)
 
 
 //--------------------------------------------------------
-boolean ColorEaser::tick(Color& c)
+boolean ColorEaser::update(Color& c)
 {
   unsigned long _now = millis();
   
-  return tick(_now, c);
+  return update(_now, c);
 }
 
 
-boolean ColorEaser::tick(unsigned long _now, Color& c)
+// return dirty flag
+boolean ColorEaser::update(unsigned long _now, Color& c)
 {
+  // we are not easing
+  // we are clean
+  // return
+  if (!m_isEasing) return false;
+  
+  
+  // do easing
   double percent;  
-  boolean result = Easer::tick(_now, &percent);
+  m_isEasing = Easer::update(_now, &percent);
   
   if (percent >= 1.0) {
     switch (getLoop())
@@ -110,5 +120,6 @@ boolean ColorEaser::tick(unsigned long _now, Color& c)
   // set color
   c.setRGB(r, g, b);
   
-  return result;
+  // we are dirty
+  return true;
 }

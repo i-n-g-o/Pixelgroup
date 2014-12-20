@@ -20,6 +20,8 @@
 #define PIXELGROUP_BASE_H
 
 
+#include <Arduino.h>
+
 #include "pixelWriter.h"
 #include "pixelWriterInterface.h"
 
