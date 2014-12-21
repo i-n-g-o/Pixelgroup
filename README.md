@@ -6,7 +6,7 @@ Pixelgroup is a library to group pixels in a LED-strip. It is intended to be use
 Pixelgroups are limited to 255 pixels.
 
 
-Pixelgroup has 4 Pixelgroup classes:
+4 Pixelgroup classes:
 --
 
 PixelgroupBase:
