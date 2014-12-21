@@ -7,6 +7,7 @@ Pixelgroups are limited to 255 pixels.
 
 
 Pixelgroup has 4 Pixelgroup classes:
+--
 
 PixelgroupBase:
 - basic pixelgroup
