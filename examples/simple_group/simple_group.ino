@@ -15,6 +15,9 @@ PixelWriter pixelWriter(strip.getPixels(), (uint8_t)strip.numPixels(), PXW_GRB);
 //------------------------
 // create pixelgroup
 // instanciate with pixel indices
+
+// argument 1: amount of pixels (e.g.: 3)
+// argument 2..n: pixel indices (e.g.: 0, 1, 2)
 Pixelgroup thegroup(3, 0, 1, 2);
 
 

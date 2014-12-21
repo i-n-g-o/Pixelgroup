@@ -19,6 +19,9 @@ WS2801Writer pixelWriter(25, dataPin, clockPin);
 // create pixelgroups
 
 // instanciate with pixel indici
+
+// argument 1: amount of pixels (e.g.: 3)
+// argument 2..n: pixel indices (e.g.: 0, 1, 2)
 Pixelgroup thegroup(3, 0, 1, 2);
 
 
