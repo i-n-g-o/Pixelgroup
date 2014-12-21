@@ -34,6 +34,13 @@ void setup()
 
   //------------------------
   // manipulate group
+  
+    // set pixels
+  // argument 1: amount of pixels (e.g.: 4)
+  // argument 2..n: pixel indices (e.g.: 4, 5, 6, 7)
+  thegroup.setPixels(4, 4, 5, 6, 7);
+  
+  // clear the group
   thegroup.clear();
   
   // add pixels
