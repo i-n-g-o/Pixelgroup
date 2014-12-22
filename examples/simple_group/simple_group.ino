@@ -1,4 +1,3 @@
-// needed prior to neopixelwriter
 #include <Adafruit_NeoPixel.h>
 #include <Pixelgroup.h>
 
@@ -34,6 +33,7 @@ void setup()
 
   //------------------------
   // manipulate group
+  // demonstrate available functions
   
     // set pixels
   // argument 1: amount of pixels (e.g.: 4)

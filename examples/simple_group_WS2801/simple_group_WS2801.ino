@@ -1,6 +1,5 @@
-// needed prior to neopixelwriter
+#include <SPI.h>
 #include <Adafruit_WS2801.h>
-#include "SPI.h"
 #include <Pixelgroup.h>
 
 #include "WS2801Writer.h"
@@ -33,6 +32,7 @@ void setup()
   
   //------------------------
   // manipulate group
+  // demonstrate available functions
   
   // set pixels
   // argument 1: amount of pixels (e.g.: 4)
