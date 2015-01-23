@@ -81,10 +81,10 @@ boolean ColorEaser::update(unsigned long _now, Color& c)
   double gd = m_to.getG() - m_from.getG();
   double bd = m_to.getB() - m_from.getB();
   
-  uint8_t r = m_from.getR() + (uint8_t)(percent * rd);
-  uint8_t g = m_from.getG() + (uint8_t)(percent * gd);
-  uint8_t b = m_from.getB() + (uint8_t)(percent * bd);
-
+  uint8_t r = (uint8_t)(m_from.getR() + (percent * rd));
+  uint8_t g = (uint8_t)(m_from.getG() + (percent * gd));
+  uint8_t b = (uint8_t)(m_from.getB() + (percent * bd));
+	
   // set color
   c.setRGB(r, g, b);
   
