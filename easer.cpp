@@ -130,7 +130,7 @@ boolean Easer::update(unsigned long _now, double* current)
       break;
   }
 
-  // calculate current
+  // calculate current [0..1]
   *current = calcCurrent(currentTime);
   
   return true;

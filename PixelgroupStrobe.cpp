@@ -71,6 +71,7 @@ void PixelgroupStrobe::paint(PixelWriterInterface& writer)
   if (!isDirty()) return;
   if (getPixels() == 0 || getSize() == 0) return;
 
+	boolean strobeState = !Strobe::isStrobing() || Strobe::getStrobeState();
   
   // mark as clean
   setDirty(false);
@@ -84,7 +85,7 @@ void PixelgroupStrobe::paint(PixelWriterInterface& writer)
     // sets color in pixelWriter
     // sets pixelwriter to dirty
     
-    if (!getStrobeState()) {
+		if (!strobeState) {
       writer.setPixelColor(pixelIndex, 0, 0, 0);
     } else {
       writer.setPixelColor((uint8_t)pixelIndex, getR(), getG(), getB());

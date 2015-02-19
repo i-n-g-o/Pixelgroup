@@ -78,7 +78,7 @@ void Pixelgroup::paint(PixelWriterInterface& writer)
   if (getPixels() == 0 || getSize() == 0) return;
   
   
-  boolean strobeState = getStrobeState();
+	boolean strobeState = !Strobe::isStrobing() || Strobe::getStrobeState();
   boolean flickeringDone = false;
   
   
