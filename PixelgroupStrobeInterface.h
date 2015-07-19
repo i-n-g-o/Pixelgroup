@@ -19,6 +19,8 @@
 #ifndef PIXELGROUP_STROBE_INTERFACE_H
 #define PIXELGROUP_STROBE_INTERFACE_H
 
+#include <inttypes.h>
+#include <stdbool.h>
 
 #include "pixelWriterInterface.h"
 
@@ -27,8 +29,8 @@
 class PixelgroupStrobeInterface
 {
 public:  
-  virtual void setStrobing(boolean b) = 0;
-  virtual boolean isStrobing() = 0;
+  virtual void setStrobing(bool b) = 0;
+  virtual bool isStrobing() = 0;
   
   virtual void paint(PixelWriterInterface&) = 0;
   

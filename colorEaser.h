@@ -19,7 +19,6 @@
 #ifndef COLOR_EASER_H
 #define COLOR_EASER_H
 
-
 #include "easer.h"
 #include "color.h"
 
@@ -39,17 +38,17 @@ class ColorEaser : public Easer
   void setTo(uint8_t, uint8_t, uint8_t);
   Color& getTo() {return m_to;};
   
-  void setEasing(boolean easing) {m_isEasing = easing;};
-  boolean isEasing() {return m_isEasing;};
+  void setEasing(bool easing) {m_isEasing = easing;};
+  bool isEasing() {return m_isEasing;};
   
-  boolean update(Color& c);
-  boolean update(unsigned long _now, Color& c);
+  bool update(Color& c);
+  bool update(unsigned long _now, Color& c);
   
 private:
   Color       m_from;
   Color       m_to;
   
-  boolean     m_isEasing;
+  bool     m_isEasing;
 };
 
 

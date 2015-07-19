@@ -19,7 +19,6 @@
 #ifndef PIXELGROUP_STROBE_H
 #define PIXELGROUP_STROBE_H
 
-
 #include "PixelgroupBase.h"
 #include "strobe.h"
 #include "PixelgroupStrobeInterface.h"
@@ -38,8 +37,8 @@ public:
   PixelgroupStrobe(uint8_t count, ...);
   
   // Pixelgroup strobe interface
-  void setStrobing(boolean b);
-  boolean isStrobing() {return Strobe::isStrobing();};
+  void setStrobing(bool b);
+  bool isStrobing() {return Strobe::isStrobing();};
   
   void update();
   void update(unsigned long _now);

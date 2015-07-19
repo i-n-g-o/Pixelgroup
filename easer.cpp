@@ -19,6 +19,9 @@
 
 #include <limits.h>
 
+// need arduino for millis()
+#include <Arduino.h>
+
 #include "easer.h"
 #include "easerTypes.h"
 
@@ -52,7 +55,7 @@ void Easer::rewind()
 }
 
 
-boolean Easer::update(double* current)
+bool Easer::update(double* current)
 {
   unsigned long _now = millis();
   
@@ -60,7 +63,7 @@ boolean Easer::update(double* current)
 }
 
 
-boolean Easer::update(unsigned long _now, double* current)
+bool Easer::update(unsigned long _now, double* current)
 {
   signed long currentTime = 0;
   

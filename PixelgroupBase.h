@@ -20,7 +20,13 @@
 #define PIXELGROUP_BASE_H
 
 
-#include <Arduino.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <inttypes.h>
+#include <stdbool.h>
+#include <string.h>
+
+
 
 #include "pixelWriter.h"
 #include "pixelWriterInterface.h"
@@ -56,8 +62,8 @@ public:
   uint8_t getG() {return m_color.getG();};
   uint8_t getB() {return m_color.getB();};
   
-  boolean isDirty() {return m_dirty;};
-  void setDirty(boolean state) {m_dirty = state;};
+  bool isDirty() {return m_dirty;};
+  void setDirty(bool state) {m_dirty = state;};
   
   void paint(PixelWriterInterface&);
   
@@ -75,7 +81,7 @@ private:
   Color           m_color;
 
   // dirtyflag
-  boolean        m_dirty;
+  bool        m_dirty;
   
 };
 

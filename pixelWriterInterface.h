@@ -20,7 +20,8 @@
 #ifndef PIXEL_WRITER_INTERFACE_H
 #define PIXEL_WRITER_INTERFACE_H
 
-#include <Arduino.h>
+#include <inttypes.h>
+#include <stdbool.h>
 
 //--------------------------------------------------------
 // a pixel writer interface
@@ -32,11 +33,11 @@ public:
   
   virtual void show() = 0;
   
-  void setDirty(boolean state) {m_dirty = state;};
-  boolean isDirty() {return m_dirty;};
+  void setDirty(bool state) {m_dirty = state;};
+  bool isDirty() {return m_dirty;};
   
 private:
-  boolean     m_dirty;
+  bool     m_dirty;
   
 };
 

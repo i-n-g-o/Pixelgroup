@@ -18,6 +18,8 @@
 //-------------------------------------------------------------------------------*/
 #include "Pixelgroup.h"
 
+// need arduino for millis()
+#include <Arduino.h>
 
 //--------------------------------------------------------
 // constructor, deconstructor
@@ -42,7 +44,7 @@ Pixelgroup::Pixelgroup(uint8_t count, ...) : PixelgroupBase(), ColorEaser(), Str
 
 
 //--------------------------------------------------------
-void Pixelgroup::setStrobing(boolean b)
+void Pixelgroup::setStrobing(bool b)
 {
   Strobe::setStrobing(b);
 
@@ -61,11 +63,11 @@ void Pixelgroup::update()
 void Pixelgroup::update(unsigned long _now)
 {
   // EASING
-  boolean d = ColorEaser::update(_now, getColor());  
+  bool d = ColorEaser::update(_now, getColor());  
   if (d) setDirty(true);
   
   // STROBE
-  boolean c = Strobe::update(_now);
+  bool c = Strobe::update(_now);
   if (c) setDirty(true);
 }
 
@@ -78,8 +80,8 @@ void Pixelgroup::paint(PixelWriterInterface& writer)
   if (getPixels() == 0 || getSize() == 0) return;
   
   
-	boolean strobeState = !Strobe::isStrobing() || Strobe::getStrobeState();
-  boolean flickeringDone = false;
+	bool strobeState = !Strobe::isStrobing() || Strobe::getStrobeState();
+  bool flickeringDone = false;
   
   
   // mark as clean

@@ -17,6 +17,10 @@
 *  Lesser General Public License for more details.
 //-------------------------------------------------------------------------------*/
 
+
+// need arduino for millis()
+#include <Arduino.h>
+
 #include "colorEaser.h"
 #include "color.h"
 
@@ -56,7 +60,7 @@ void ColorEaser::setTo(uint8_t r, uint8_t g, uint8_t b)
 
 
 //--------------------------------------------------------
-boolean ColorEaser::update(Color& c)
+bool ColorEaser::update(Color& c)
 {
   unsigned long _now = millis();
   
@@ -65,7 +69,7 @@ boolean ColorEaser::update(Color& c)
 
 
 // return dirty flag
-boolean ColorEaser::update(unsigned long _now, Color& c)
+bool ColorEaser::update(unsigned long _now, Color& c)
 {
   // we are not easing
   // we are clean

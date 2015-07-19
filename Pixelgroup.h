@@ -6,6 +6,16 @@
 *  written by: Ingo Randolf - 2014
 *
 *
+*  Pixelgroup is a library to group pixels in a LED-strip.
+*  It depends on Arduino for getting elapsed-time via millis() and can be
+*  used together with a pixel-strip library like Adafruit_NeoPixel or Adafruit_WS2801,
+*  but can be used for any kind of backend.
+*  The PixelWriter class can be used to write into a uint8_t array.
+*  The PixelWriterInterface can be used to subclass existing pixelstrip
+*  writers or to build your own writer.
+*
+*
+*
 *  This library is free software; you can redistribute it and/or
 *  modify it under the terms of the GNU Lesser General Public
 *  License as published by the Free Software Foundation; either
@@ -21,7 +31,8 @@
 
 
 #include <stdarg.h>
-#include <Arduino.h>
+#include <inttypes.h>
+#include <stdbool.h>
 
 
 #include "PixelgroupBase.h"
@@ -33,10 +44,8 @@
 
 /*
 *  TODO
-
 - bug in easer with bounce!?
-- needed flickermode?
-
+- flickermode needed?
 *
 */
 
@@ -65,7 +74,7 @@ public:
 
   
   void setFlicker(uint8_t num) {m_isFlickering = num;};
-  boolean isFlicker() {return m_isFlickering;};
+  bool isFlicker() {return m_isFlickering;};
 //  void setFlickerMode(uint8_t mode) {m_flickerMode = mode;};
 //  uint8_t getFlickerMode() {return m_flickerMode;};
   
@@ -73,8 +82,8 @@ public:
   // satisfy interfaces
   
   // Pixelgroup strobe interface
-  void setStrobing(boolean b);
-  boolean isStrobing() {return Strobe::isStrobing();};
+  void setStrobing(bool b);
+  bool isStrobing() {return Strobe::isStrobing();};
   
   void paint(PixelWriterInterface&);
   

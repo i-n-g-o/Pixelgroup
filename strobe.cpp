@@ -20,6 +20,11 @@
 #include "strobe.h"
 
 
+// need arduino for millis()
+#include <Arduino.h>
+
+
+//--------------------------------------------------------
 Strobe::Strobe() :
    m_strobeOffTime(250)
   ,m_strobeOnTime(250)
@@ -34,14 +39,14 @@ Strobe::Strobe() :
 
 
 //--------------------------------------------------------
-void Strobe::setStrobing(boolean b)
+void Strobe::setStrobing(bool b)
 {
   m_isStrobing = b;
   setStrobeState(false);
 }
 
 
-void Strobe::setStrobeState(boolean state)
+void Strobe::setStrobeState(bool state)
 {
   m_state = state;
   // reset time
@@ -50,7 +55,7 @@ void Strobe::setStrobeState(boolean state)
 
 
 //--------------------------------------------------------
-boolean Strobe::update()
+bool Strobe::update()
 {
   unsigned long _now = millis();
   
@@ -58,7 +63,7 @@ boolean Strobe::update()
 }
 
 
-boolean Strobe::update(unsigned long _now)
+bool Strobe::update(unsigned long _now)
 {
   // if not turned on return false (not changed = not dirty)
   if (!m_isStrobing) return false;
@@ -66,7 +71,7 @@ boolean Strobe::update(unsigned long _now)
   
   // do strobe
   unsigned long diff = 0;
-  boolean changed = false;
+  bool changed = false;
 
   // take care of type limits
   if (_now >= m_lastUpdate) {  
