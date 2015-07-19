@@ -1,5 +1,5 @@
 /*//-------------------------------------------------------------------------------
-*  PixelWriterInterdface.h
+*  PixelWriterInterface.h
 *
 *  Interface for PixelWriter
 *  
