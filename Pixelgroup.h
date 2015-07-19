@@ -29,7 +29,6 @@
 #ifndef PIXELGROUP_H
 #define PIXELGROUP_H
 
-
 #include <stdarg.h>
 #include <inttypes.h>
 #include <stdbool.h>
@@ -89,7 +88,6 @@ public:
   
   // Pixelgroup strobe interface
   // Pixelgroup easer interface
-  void update();
   void update(unsigned long _now);
   
 

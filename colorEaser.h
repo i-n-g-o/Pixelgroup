@@ -40,8 +40,7 @@ class ColorEaser : public Easer
   
   void setEasing(bool easing) {m_isEasing = easing;};
   bool isEasing() {return m_isEasing;};
-  
-  bool update(Color& c);
+	
   bool update(unsigned long _now, Color& c);
   
 private:

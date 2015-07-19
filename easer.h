@@ -47,8 +47,7 @@ public:
   uint8_t getLoop() {return m_loop;};
   
   void rewind();
-  
-  bool update(double*);
+	
   bool update(unsigned long, double*);
   
 private:

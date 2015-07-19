@@ -39,8 +39,7 @@ public:
   // Pixelgroup strobe interface
   void setStrobing(bool b);
   bool isStrobing() {return Strobe::isStrobing();};
-  
-  void update();
+	
   void update(unsigned long _now);
   
   void paint(PixelWriterInterface&);

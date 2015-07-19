@@ -45,7 +45,7 @@ public:
   void show();
 
 private:
-  uint8_t*  m_pixels;
+  uint8_t* m_pixels;
   uint8_t  m_pixelCount;
    
   uint8_t rOffset;       // Index of red byte within each 3-byte pixel

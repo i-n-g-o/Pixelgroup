@@ -39,13 +39,12 @@ public:
   uint16_t getOffTime() {return m_strobeOffTime;};
   
   void setStrobeState(bool);
+  void setStrobeState(bool, unsigned long _now);
   bool getStrobeState() {return m_state;};  
   
   void setStrobing(bool);
   bool isStrobing() {return m_isStrobing;};
   
-  
-  bool update();
   bool update(unsigned long _now);
   
 private:
@@ -53,9 +52,9 @@ private:
   uint16_t        m_strobeOnTime; // in ms (max 65.535 ms)
   
   unsigned long   m_lastUpdate;
-  bool         m_state;
+  bool			  m_state;
   
-  bool         m_isStrobing;
+  bool		      m_isStrobing;
 };
 
 

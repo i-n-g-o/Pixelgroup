@@ -33,8 +33,7 @@ public:
   virtual bool isStrobing() = 0;
   
   virtual void paint(PixelWriterInterface&) = 0;
-  
-  virtual void update() = 0;
+	
   virtual void update(unsigned long _now) = 0;
 };
 

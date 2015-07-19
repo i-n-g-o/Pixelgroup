@@ -18,8 +18,6 @@
 //-------------------------------------------------------------------------------*/
 #include "PixelgroupStrobe.h"
 
-// need arduino for millis()
-#include <Arduino.h>
 
 //--------------------------------------------------------
 // constructor, deconstructor
@@ -51,13 +49,7 @@ void PixelgroupStrobe::setStrobing(bool b)
 
 
 //--------------------------------------------------------
-void PixelgroupStrobe::update()
-{
-  unsigned long _now = millis();  
-  update(_now);
-}
-
-
+// update with time
 void PixelgroupStrobe::update(unsigned long _now)
 {
   bool changed = Strobe::update(_now);

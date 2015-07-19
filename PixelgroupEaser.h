@@ -38,7 +38,6 @@ public:
   PixelgroupEaser(uint8_t count, ...);
   
   // easer interface
-  void update();
   void update(unsigned long _now);
   
 };

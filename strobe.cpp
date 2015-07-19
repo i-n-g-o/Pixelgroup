@@ -20,10 +20,6 @@
 #include "strobe.h"
 
 
-// need arduino for millis()
-#include <Arduino.h>
-
-
 //--------------------------------------------------------
 Strobe::Strobe() :
    m_strobeOffTime(250)
@@ -49,20 +45,17 @@ void Strobe::setStrobing(bool b)
 void Strobe::setStrobeState(bool state)
 {
   m_state = state;
-  // reset time
-  m_lastUpdate = millis();
+}
+
+void Strobe::setStrobeState(bool state, unsigned long _now)
+{
+	m_state = state;
+	// reset time
+	m_lastUpdate = _now;
 }
 
 
 //--------------------------------------------------------
-bool Strobe::update()
-{
-  unsigned long _now = millis();
-  
-  return update(_now);
-}
-
-
 bool Strobe::update(unsigned long _now)
 {
   // if not turned on return false (not changed = not dirty)

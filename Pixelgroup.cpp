@@ -18,8 +18,6 @@
 //-------------------------------------------------------------------------------*/
 #include "Pixelgroup.h"
 
-// need arduino for millis()
-#include <Arduino.h>
 
 //--------------------------------------------------------
 // constructor, deconstructor
@@ -53,13 +51,6 @@ void Pixelgroup::setStrobing(bool b)
 
 
 //--------------------------------------------------------
-void Pixelgroup::update()
-{
-  unsigned long _now = millis();  
-  update(_now);
-}
-
-
 void Pixelgroup::update(unsigned long _now)
 {
   // EASING
@@ -95,7 +86,7 @@ void Pixelgroup::paint(PixelWriterInterface& writer)
     if (m_isFlickering > 0 &&
       !flickeringDone)
     {
-      if (random(100) > 80) {
+      if ((random() % 100) > 80) {
         strobeState &= 0;
         flickeringDone = true;
         m_isFlickering--;

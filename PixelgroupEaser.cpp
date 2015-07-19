@@ -18,9 +18,6 @@
 //-------------------------------------------------------------------------------*/
 #include "PixelgroupEaser.h"
 
-// need arduino for millis()
-#include <Arduino.h>
-
 
 //--------------------------------------------------------
 // constructor, deconstructor
@@ -41,13 +38,6 @@ PixelgroupEaser::PixelgroupEaser(uint8_t count, ...) : PixelgroupBase(), ColorEa
 
 
 //--------------------------------------------------------
-void PixelgroupEaser::update()
-{
-  unsigned long _now = millis();  
-  update(_now);
-}
-
-
 void PixelgroupEaser::update(unsigned long _now)
 {
   bool d = ColorEaser::update(_now, getColor());  
