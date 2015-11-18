@@ -1,7 +1,7 @@
 /*//-------------------------------------------------------------------------------
-*  PixelgroupStrobeInterface.h
+*  PixelgroupEaser.cpp
 *
-*  Interface for strobing Pixelgroups
+*  PixelgroupEaser Class. A Pixelgroup which can do a color ease
 *  
 *  written by: Ingo Randolf - 2014
 *
@@ -16,24 +16,30 @@
 *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 *  Lesser General Public License for more details.
 //-------------------------------------------------------------------------------*/
-#ifndef PIXELGROUP_STROBE_INTERFACE_H
-#define PIXELGROUP_STROBE_INTERFACE_H
+#include "PixelgroupEaser.h"
 
-
-#include "pixelWriterInterface.h"
 
 //--------------------------------------------------------
-// strobing interface
-class PixelgroupStrobeInterface
-{
-public:  
-  virtual void setStrobing(boolean b) = 0;
-  virtual boolean isStrobing() = 0;
-  
-  virtual void paint(PixelWriterInterface&) = 0;
-  
-  virtual void update() = 0;
-  virtual void update(unsigned long _now) = 0;
-};
+// constructor, deconstructor
+PixelgroupEaser::PixelgroupEaser() : PixelgroupBase(), ColorEaser()
+{}
 
-#endif
+
+PixelgroupEaser::PixelgroupEaser(uint8_t count, ...) : PixelgroupBase(), ColorEaser()
+{
+  va_list args;
+  va_start(args, count);
+
+  // setup pixels
+  v_setPixels(count, args);
+  
+  va_end(args);
+}
+
+
+//--------------------------------------------------------
+void PixelgroupEaser::update(unsigned long _now)
+{
+  bool d = ColorEaser::update(_now, getColor());  
+  if (d) setDirty(true);
+}

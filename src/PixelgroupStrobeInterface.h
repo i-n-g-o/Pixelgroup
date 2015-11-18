@@ -1,7 +1,7 @@
 /*//-------------------------------------------------------------------------------
-*  colorEaser.h
+*  PixelgroupStrobeInterface.h
 *
-*  Header file for ColorEaser
+*  Interface for strobing Pixelgroups
 *  
 *  written by: Ingo Randolf - 2014
 *
@@ -16,41 +16,25 @@
 *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 *  Lesser General Public License for more details.
 //-------------------------------------------------------------------------------*/
-#ifndef COLOR_EASER_H
-#define COLOR_EASER_H
+#ifndef PIXELGROUP_STROBE_INTERFACE_H
+#define PIXELGROUP_STROBE_INTERFACE_H
 
+#include <inttypes.h>
+#include <stdbool.h>
 
-#include "easer.h"
-#include "color.h"
+#include "pixelWriterInterface.h"
 
 //--------------------------------------------------------
-// a color easer
-class ColorEaser : public Easer
+// strobing interface
+class PixelgroupStrobeInterface
 {
-  public:
-  ColorEaser();
-  ColorEaser(easingFunc);
-    
-  void setFrom(Color&);
-  void setFrom(uint8_t, uint8_t, uint8_t);
-  Color& getFrom() {return m_from;};
+public:  
+  virtual void setStrobing(bool b) = 0;
+  virtual bool isStrobing() = 0;
   
-  void setTo(Color&);
-  void setTo(uint8_t, uint8_t, uint8_t);
-  Color& getTo() {return m_to;};
-  
-  void setEasing(boolean easing) {m_isEasing = easing;};
-  boolean isEasing() {return m_isEasing;};
-  
-  boolean update(Color& c);
-  boolean update(unsigned long _now, Color& c);
-  
-private:
-  Color       m_from;
-  Color       m_to;
-  
-  boolean     m_isEasing;
+  virtual void paint(PixelWriterInterface&) = 0;
+	
+  virtual void update(unsigned long _now) = 0;
 };
-
 
 #endif

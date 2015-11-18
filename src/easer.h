@@ -20,7 +20,8 @@
 #define EASER_H
 
 
-#include <Arduino.h>
+#include <inttypes.h>
+#include <stdbool.h>
 
 #include "easerTypes.h"
 
@@ -46,9 +47,8 @@ public:
   uint8_t getLoop() {return m_loop;};
   
   void rewind();
-  
-  boolean update(double*);
-  boolean update(unsigned long, double*);
+	
+  bool update(unsigned long, double*);
   
 private:
   

@@ -56,16 +56,8 @@ void ColorEaser::setTo(uint8_t r, uint8_t g, uint8_t b)
 
 
 //--------------------------------------------------------
-boolean ColorEaser::update(Color& c)
-{
-  unsigned long _now = millis();
-  
-  return update(_now, c);
-}
-
-
 // return dirty flag
-boolean ColorEaser::update(unsigned long _now, Color& c)
+bool ColorEaser::update(unsigned long _now, Color& c)
 {
   // we are not easing
   // we are clean

@@ -41,11 +41,11 @@ public:
   virtual void setPixelColor(uint16_t n, uint32_t c);
    
   void setShowFunc( void (*)(void) );
-  boolean isShowFunc() {return (showFunc>0);};
+  bool isShowFunc() {return (showFunc>0);};
   void show();
 
 private:
-  uint8_t*  m_pixels;
+  uint8_t* m_pixels;
   uint8_t  m_pixelCount;
    
   uint8_t rOffset;       // Index of red byte within each 3-byte pixel

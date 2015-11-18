@@ -1,7 +1,7 @@
 /*//-------------------------------------------------------------------------------
-*  PixelgroupEaser.h
+*  color.h
 *
-*  Header file for PixelgroupEaser
+*  Header file for color
 *  
 *  written by: Ingo Randolf - 2014
 *
@@ -16,31 +16,39 @@
 *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 *  Lesser General Public License for more details.
 //-------------------------------------------------------------------------------*/
-#ifndef PIXELGROUP_EASER_H
-#define PIXELGROUP_EASER_H
 
+#ifndef COLOR_H
+#define COLOR_H
 
-#include "PixelgroupBase.h"
-#include "colorEaser.h"
-#include "PixelgroupEaserInterface.h"
-
+#include <inttypes.h>
 
 //--------------------------------------------------------
-// a pixelgroup with color easing ability
-class PixelgroupEaser :
-  public PixelgroupBase,
-  public ColorEaser,
-  public PixelgroupEaserInterface
-{
+// color
+class Color
+{  
 public:
+  Color();
+  Color(uint8_t, uint8_t, uint8_t);  
+  Color(const Color&);
   
-  PixelgroupEaser();
-  PixelgroupEaser(uint8_t count, ...);
+  void operator*=(double f);
+  Color& operator*(double f);
   
-  // easer interface
-  void update();
-  void update(unsigned long _now);
+  void setRGB(uint8_t, uint8_t, uint8_t);
+  void setRGB(Color&);
+  void setR(uint8_t);
+  void setG(uint8_t);
+  void setB(uint8_t);
+  uint8_t getR() {return r;};
+  uint8_t getG() {return g;};
+  uint8_t getB() {return b;};
   
+  
+private:
+  uint8_t  r;
+  uint8_t  g;
+  uint8_t  b;
 };
+
 
 #endif

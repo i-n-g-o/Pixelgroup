@@ -1,7 +1,7 @@
 /*//-------------------------------------------------------------------------------
-*  PixelWriterInterdface.h
+*  PixelgroupEaserInterface.h
 *
-*  Interface for PixelWriter
+*  Interface for Pixelgroup Easer
 *  
 *  written by: Ingo Randolf - 2014
 *
@@ -16,29 +16,17 @@
 *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 *  Lesser General Public License for more details.
 //-------------------------------------------------------------------------------*/
+#ifndef PIXELGROUP_EASER_INTERFACE_H
+#define PIXELGROUP_EASER_INTERFACE_H
 
-#ifndef PIXEL_WRITER_INTERFACE_H
-#define PIXEL_WRITER_INTERFACE_H
-
-#include <Arduino.h>
 
 //--------------------------------------------------------
-// a pixel writer interface
-class PixelWriterInterface
+// strobing interface
+class PixelgroupEaserInterface
 {
 public:
-  virtual void setPixelColor(uint16_t n, uint8_t r, uint8_t g, uint8_t b) = 0;
-  virtual void setPixelColor(uint16_t n, uint32_t c) = 0;
-  
-  virtual void show() = 0;
-  
-  void setDirty(boolean state) {m_dirty = state;};
-  boolean isDirty() {return m_dirty;};
-  
-private:
-  boolean     m_dirty;
-  
+	
+  virtual void update(unsigned long _now) = 0;
 };
-
 
 #endif

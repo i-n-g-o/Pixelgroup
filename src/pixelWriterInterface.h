@@ -1,7 +1,7 @@
 /*//-------------------------------------------------------------------------------
-*  color.h
+*  PixelWriterInterface.h
 *
-*  Header file for color
+*  Interface for PixelWriter
 *  
 *  written by: Ingo Randolf - 2014
 *
@@ -17,37 +17,28 @@
 *  Lesser General Public License for more details.
 //-------------------------------------------------------------------------------*/
 
-#ifndef COLOR_H
-#define COLOR_H
+#ifndef PIXEL_WRITER_INTERFACE_H
+#define PIXEL_WRITER_INTERFACE_H
 
-#include <Arduino.h>
+#include <inttypes.h>
+#include <stdbool.h>
 
 //--------------------------------------------------------
-// color
-class Color
-{  
+// a pixel writer interface
+class PixelWriterInterface
+{
 public:
-  Color();
-  Color(uint8_t, uint8_t, uint8_t);  
-  Color(const Color&);
+  virtual void setPixelColor(uint16_t n, uint8_t r, uint8_t g, uint8_t b) = 0;
+  virtual void setPixelColor(uint16_t n, uint32_t c) = 0;
   
-  void operator*=(double f);
-  Color& operator*(double f);
+  virtual void show() = 0;
   
-  void setRGB(uint8_t, uint8_t, uint8_t);
-  void setRGB(Color&);
-  void setR(uint8_t);
-  void setG(uint8_t);
-  void setB(uint8_t);
-  uint8_t getR() {return r;};
-  uint8_t getG() {return g;};
-  uint8_t getB() {return b;};
-  
+  void setDirty(bool state) {m_dirty = state;};
+  bool isDirty() {return m_dirty;};
   
 private:
-  uint8_t  r;
-  uint8_t  g;
-  uint8_t  b;
+  bool     m_dirty;
+  
 };
 
 

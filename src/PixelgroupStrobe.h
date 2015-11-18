@@ -1,7 +1,7 @@
 /*//-------------------------------------------------------------------------------
-*  PixelgroupEaser.cpp
+*  PixelgroupStrobe.h
 *
-*  PixelgroupEaser Class. A Pixelgroup which can do a color ease
+*  Header file for PixelgroupStrobe
 *  
 *  written by: Ingo Randolf - 2014
 *
@@ -16,37 +16,33 @@
 *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 *  Lesser General Public License for more details.
 //-------------------------------------------------------------------------------*/
-#include "PixelgroupEaser.h"
+#ifndef PIXELGROUP_STROBE_H
+#define PIXELGROUP_STROBE_H
+
+#include "PixelgroupBase.h"
+#include "strobe.h"
+#include "PixelgroupStrobeInterface.h"
 
 
 //--------------------------------------------------------
-// constructor, deconstructor
-PixelgroupEaser::PixelgroupEaser() : PixelgroupBase(), ColorEaser()
-{}
-
-
-PixelgroupEaser::PixelgroupEaser(uint8_t count, ...) : PixelgroupBase(), ColorEaser()
+// a pixelgroup with strobing ability
+class PixelgroupStrobe :
+  public PixelgroupBase,
+  public Strobe,
+  public PixelgroupStrobeInterface
 {
-  va_list args;
-  va_start(args, count);
-
-  // setup pixels
-  v_setPixels(count, args);
+public:
   
-  va_end(args);
-}
+  PixelgroupStrobe();
+  PixelgroupStrobe(uint8_t count, ...);
+  
+  // Pixelgroup strobe interface
+  void setStrobing(bool b);
+  bool isStrobing() {return Strobe::isStrobing();};
+	
+  void update(unsigned long _now);
+  
+  void paint(PixelWriterInterface&);
+};
 
-
-//--------------------------------------------------------
-void PixelgroupEaser::update()
-{
-  unsigned long _now = millis();  
-  update(_now);
-}
-
-
-void PixelgroupEaser::update(unsigned long _now)
-{
-  boolean d = ColorEaser::update(_now, getColor());  
-  if (d) setDirty(true);
-}
+#endif

@@ -1,7 +1,7 @@
 /*//-------------------------------------------------------------------------------
-*  PixelgroupEaserInterface.h
+*  PixelgroupEaser.h
 *
-*  Interface for Pixelgroup Easer
+*  Header file for PixelgroupEaser
 *  
 *  written by: Ingo Randolf - 2014
 *
@@ -16,18 +16,30 @@
 *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 *  Lesser General Public License for more details.
 //-------------------------------------------------------------------------------*/
-#ifndef PIXELGROUP_EASER_INTERFACE_H
-#define PIXELGROUP_EASER_INTERFACE_H
+#ifndef PIXELGROUP_EASER_H
+#define PIXELGROUP_EASER_H
+
+
+#include "PixelgroupBase.h"
+#include "colorEaser.h"
+#include "PixelgroupEaserInterface.h"
 
 
 //--------------------------------------------------------
-// strobing interface
-class PixelgroupEaserInterface
+// a pixelgroup with color easing ability
+class PixelgroupEaser :
+  public PixelgroupBase,
+  public ColorEaser,
+  public PixelgroupEaserInterface
 {
 public:
   
-  virtual void update() = 0;
-  virtual void update(unsigned long _now) = 0;
+  PixelgroupEaser();
+  PixelgroupEaser(uint8_t count, ...);
+  
+  // easer interface
+  void update(unsigned long _now);
+  
 };
 
 #endif

@@ -1,7 +1,7 @@
 /*//-------------------------------------------------------------------------------
-*  PixelgroupStrobe.h
+*  colorEaser.h
 *
-*  Header file for PixelgroupStrobe
+*  Header file for ColorEaser
 *  
 *  written by: Ingo Randolf - 2014
 *
@@ -16,35 +16,39 @@
 *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 *  Lesser General Public License for more details.
 //-------------------------------------------------------------------------------*/
-#ifndef PIXELGROUP_STROBE_H
-#define PIXELGROUP_STROBE_H
+#ifndef COLOR_EASER_H
+#define COLOR_EASER_H
 
-
-#include "PixelgroupBase.h"
-#include "strobe.h"
-#include "PixelgroupStrobeInterface.h"
-
+#include "easer.h"
+#include "color.h"
 
 //--------------------------------------------------------
-// a pixelgroup with strobing ability
-class PixelgroupStrobe :
-  public PixelgroupBase,
-  public Strobe,
-  public PixelgroupStrobeInterface
+// a color easer
+class ColorEaser : public Easer
 {
-public:
+  public:
+  ColorEaser();
+  ColorEaser(easingFunc);
+    
+  void setFrom(Color&);
+  void setFrom(uint8_t, uint8_t, uint8_t);
+  Color& getFrom() {return m_from;};
   
-  PixelgroupStrobe();
-  PixelgroupStrobe(uint8_t count, ...);
+  void setTo(Color&);
+  void setTo(uint8_t, uint8_t, uint8_t);
+  Color& getTo() {return m_to;};
   
-  // Pixelgroup strobe interface
-  void setStrobing(boolean b);
-  boolean isStrobing() {return Strobe::isStrobing();};
+  void setEasing(bool easing) {m_isEasing = easing;};
+  bool isEasing() {return m_isEasing;};
+	
+  bool update(unsigned long _now, Color& c);
   
-  void update();
-  void update(unsigned long _now);
+private:
+  Color       m_from;
+  Color       m_to;
   
-  void paint(PixelWriterInterface&);
+  bool     m_isEasing;
 };
+
 
 #endif

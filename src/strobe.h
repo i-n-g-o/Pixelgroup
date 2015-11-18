@@ -19,7 +19,8 @@
 #ifndef STROBE_H
 #define STROBE_H
 
-#include <Arduino.h>
+#include <inttypes.h>
+#include <stdbool.h>
 
 //--------------------------------------------------------
 //
@@ -37,24 +38,23 @@ public:
   void setOffTimeSec(double time) {m_strobeOffTime = (uint16_t)(time*1000.0);};
   uint16_t getOffTime() {return m_strobeOffTime;};
   
-  void setStrobeState(boolean);
-  boolean getStrobeState() {return m_state;};  
+  void setStrobeState(bool);
+  void setStrobeState(bool, unsigned long _now);
+  bool getStrobeState() {return m_state;};  
   
-  void setStrobing(boolean);
-  boolean isStrobing() {return m_isStrobing;};
+  void setStrobing(bool);
+  bool isStrobing() {return m_isStrobing;};
   
-  
-  boolean update();
-  boolean update(unsigned long _now);
+  bool update(unsigned long _now);
   
 private:
   uint16_t        m_strobeOffTime; // in ms (max 65.535 ms)
   uint16_t        m_strobeOnTime; // in ms (max 65.535 ms)
   
   unsigned long   m_lastUpdate;
-  boolean         m_state;
+  bool			  m_state;
   
-  boolean         m_isStrobing;
+  bool		      m_isStrobing;
 };
 
 
