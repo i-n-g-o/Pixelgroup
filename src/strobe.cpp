@@ -49,9 +49,9 @@ void Strobe::setStrobeState(bool state)
 
 void Strobe::setStrobeState(bool state, unsigned long _now)
 {
-	m_state = state;
-	// reset time
-	m_lastUpdate = _now;
+  m_state = state;
+  // reset time
+  m_lastUpdate = _now;
 }
 
 
@@ -73,7 +73,7 @@ bool Strobe::update(unsigned long _now)
     // type overflow
     diff = ULONG_MAX - m_lastUpdate + _now;
   }
-  
+
   if (m_state) {
     // strobe on
     if (diff > m_strobeOnTime) {

@@ -31,9 +31,9 @@ class PixelgroupStrobeInterface
 public:  
   virtual void setStrobing(bool b) = 0;
   virtual bool isStrobing() = 0;
-  
+
   virtual void paint(PixelWriterInterface&) = 0;
-	
+
   virtual void update(unsigned long _now) = 0;
 };
 

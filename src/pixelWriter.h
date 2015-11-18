@@ -39,7 +39,7 @@ public:
   
   virtual void setPixelColor(uint16_t n, uint8_t r, uint8_t g, uint8_t b);
   virtual void setPixelColor(uint16_t n, uint32_t c);
-   
+
   void setShowFunc( void (*)(void) );
   bool isShowFunc() {return (showFunc>0);};
   void show();
@@ -51,7 +51,7 @@ private:
   uint8_t rOffset;       // Index of red byte within each 3-byte pixel
   uint8_t gOffset;       // Index of green byte
   uint8_t bOffset;       // Index of blue byte
-   
+
   // callbacks
   void (*showFunc)(void);  
 };

@@ -70,7 +70,7 @@ void Pixelgroup::paint(PixelWriterInterface& writer)
   if (getPixels() == 0 || getSize() == 0) return;
   
   
-	bool strobeState = !Strobe::isStrobing() || Strobe::getStrobeState();
+  bool strobeState = !Strobe::isStrobing() || Strobe::getStrobeState();
   bool flickeringDone = false;
   
   
@@ -88,7 +88,7 @@ void Pixelgroup::paint(PixelWriterInterface& writer)
 #ifdef ESP8266
       if ((rand() % 100) > 80) {
 #else
-	  if ((random() % 100) > 80) {
+      if ((random() % 100) > 80) {
 #endif
         strobeState &= 0;
         flickeringDone = true;

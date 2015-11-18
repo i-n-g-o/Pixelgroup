@@ -25,7 +25,7 @@
 class PixelgroupEaserInterface
 {
 public:
-	
+
   virtual void update(unsigned long _now) = 0;
 };
 

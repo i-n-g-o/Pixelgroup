@@ -33,21 +33,21 @@ class Easer
 public:
   Easer();
   Easer(easingFunc);
-  
+
   void setEasingFunc(easingFunc func) {m_easingFunc = func;};
   uint8_t getEasingFunc() {return m_easingFunc;};
-  
+
   void setEasingType(easingType _type) {m_easingType = _type;};
   uint8_t getEasingType() {return m_easingType;};
-  
+
   void setDuration(uint16_t dur) {m_duration = dur;};
   uint16_t getDuration() {return m_duration;};
-  
+
   void setLoop(easingLoop _loop) {m_loop = _loop;};
   uint8_t getLoop() {return m_loop;};
   
   void rewind();
-	
+
   bool update(unsigned long, double*);
   
 private:

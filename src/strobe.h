@@ -28,8 +28,8 @@ class Strobe
 {
 public:
   Strobe();
-  
-      
+
+
   void setOnTime(uint16_t time) {m_strobeOnTime = time;};
   void setOnTimeSec(double time) {m_strobeOnTime = (uint16_t)(time*1000.0);};
   uint16_t getOnTime() {return m_strobeOnTime;};
@@ -52,9 +52,9 @@ private:
   uint16_t        m_strobeOnTime; // in ms (max 65.535 ms)
   
   unsigned long   m_lastUpdate;
-  bool			  m_state;
+  bool            m_state;
   
-  bool		      m_isStrobing;
+  bool            m_isStrobing;
 };
 
 

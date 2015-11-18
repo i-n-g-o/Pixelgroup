@@ -29,7 +29,7 @@ class ColorEaser : public Easer
   public:
   ColorEaser();
   ColorEaser(easingFunc);
-    
+
   void setFrom(Color&);
   void setFrom(uint8_t, uint8_t, uint8_t);
   Color& getFrom() {return m_from;};
@@ -37,10 +37,10 @@ class ColorEaser : public Easer
   void setTo(Color&);
   void setTo(uint8_t, uint8_t, uint8_t);
   Color& getTo() {return m_to;};
-  
+
   void setEasing(bool easing) {m_isEasing = easing;};
   bool isEasing() {return m_isEasing;};
-	
+
   bool update(unsigned long _now, Color& c);
   
 private:
