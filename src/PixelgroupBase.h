@@ -27,7 +27,6 @@
 #include <string.h>
 
 
-
 #include "pixelWriter.h"
 #include "pixelWriterInterface.h"
 

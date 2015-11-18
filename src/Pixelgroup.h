@@ -33,6 +33,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+
 #include "PixelgroupBase.h"
 #include "colorEaser.h"
 #include "strobe.h"
