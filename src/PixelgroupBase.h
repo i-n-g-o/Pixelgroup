@@ -3,18 +3,14 @@
 *
 *  Header file for Pixelgroup Base Class
 *  
-*  written by: Ingo Randolf - 2014
+*  This file is part of Pixelgroup library.
+*  https://github.com/i-n-g-o/Pixelgroup
 *
+*  Copyright (c) Ingo Randolf, 2014
 *
-*  This library is free software; you can redistribute it and/or
-*  modify it under the terms of the GNU Lesser General Public
-*  License as published by the Free Software Foundation; either
-*  version 2.1 of the License, or (at your option) any later version.
-*
-*  This library is distributed in the hope that it will be useful,
-*  but WITHOUT ANY WARRANTY; without even the implied warranty of
-*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-*  Lesser General Public License for more details.
+*  This Source Code Form is subject to the terms of the Mozilla Public
+*  License, v. 2.0. If a copy of the MPL was not distributed with this
+*  file, You can obtain one at https://mozilla.org/MPL/2.0/.
 //-------------------------------------------------------------------------------*/
 #ifndef PIXELGROUP_BASE_H
 #define PIXELGROUP_BASE_H
